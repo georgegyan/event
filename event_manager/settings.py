@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
 from pathlib import Path
+import os
+import dj_database_url
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -25,7 +27,7 @@ SECRET_KEY = "django-insecure-9=j2t=&9xl(v+14z+v#b0pfrwwfp=t0p29@82agg53koo3p8pq
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['events.herokuapp.com', '127.0.0.1']
 
 
 # Application definition
@@ -83,6 +85,8 @@ DATABASES = {
         "NAME": BASE_DIR / "db.sqlite3",
     }
 }
+
+DATABASES ['default'] = dj_database_url.config(conn_max_age=600, ssl_require=True)
 
 
 # Password validation
